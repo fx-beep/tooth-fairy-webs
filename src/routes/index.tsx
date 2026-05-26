@@ -65,7 +65,7 @@ function Index() {
                 <motion.span
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
-                  transition={{ delay: 0.6, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                  transition={{ delay: 0.6, duration: 0.7, ease: "easeOut" }}
                   className="absolute inset-x-0 bottom-1 -z-0 h-3 origin-left rounded-full bg-primary/30"
                 />
               </span>
@@ -150,7 +150,7 @@ function Index() {
             <motion.div
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.9, ease: "easeOut" }}
               className="absolute right-0 top-6 h-[420px] w-[78%] rounded-3xl bg-primary md:h-[520px]"
             />
 
