@@ -3,6 +3,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { CalendarCheck } from "lucide-react";
 import { services } from "@/lib/services";
+import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/appointment")({
   head: () => ({
@@ -25,16 +26,29 @@ export const Route = createFileRoute("/appointment")({
 function Appointment() {
   const [submitting, setSubmitting] = useState(false);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitting(true);
-    const data = Object.fromEntries(new FormData(e.currentTarget));
-    console.log("Appointment request:", data);
-    setTimeout(() => {
-      toast.success("Request received! We'll confirm your appointment within 24 hours.");
-      (e.target as HTMLFormElement).reset();
-      setSubmitting(false);
-    }, 700);
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    const payload = {
+      full_name: String(fd.get("name") ?? "").trim(),
+      phone: String(fd.get("phone") ?? "").trim(),
+      email: (fd.get("email") ? String(fd.get("email")).trim() : "") || null,
+      service: String(fd.get("service") ?? "").trim(),
+      preferred_date: (fd.get("date") ? String(fd.get("date")) : "") || null,
+      message: (fd.get("notes") ? String(fd.get("notes")).trim() : "") || null,
+      status: "pending",
+    };
+    const { error } = await supabase.from("appointments").insert(payload);
+    setSubmitting(false);
+    if (error) {
+      console.error(error);
+      toast.error("Could not submit request. Please try again or call us.");
+      return;
+    }
+    toast.success("Request received! We'll confirm your appointment within 24 hours.");
+    form.reset();
   };
 
   return (
