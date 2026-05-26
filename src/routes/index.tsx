@@ -277,6 +277,94 @@ function Index() {
         </div>
       </section>
 
+      {/* EXCELLENCE SHOWCASE — inspired card frame */}
+      <section className="relative py-24">
+        {/* ambient gradient backdrop */}
+        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/15 via-accent/10 to-background" />
+        <div className="absolute inset-0 -z-10 opacity-60 [background-image:radial-gradient(circle_at_20%_20%,var(--primary)/20,transparent_40%),radial-gradient(circle_at_80%_60%,var(--accent)/25,transparent_45%)]" />
+
+        <div className="mx-auto max-w-7xl px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.9, ease: "easeOut" }}
+            className="relative rounded-[2.5rem] p-2 shadow-2xl shadow-primary/20 ring-1 ring-white/40 backdrop-blur-xl"
+            style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.55), rgba(255,255,255,0.15))" }}
+          >
+            <div className="relative overflow-hidden rounded-[2rem] bg-card">
+              {/* hero image with green tint */}
+              <div className="relative h-[480px] w-full md:h-[560px]">
+                <img
+                  src={heroSmile}
+                  alt="ADH Dentistry clinic"
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/70 via-primary/40 to-accent/30 mix-blend-multiply" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/10 to-transparent" />
+
+                {/* top-right link */}
+                <div className="absolute right-8 top-8">
+                  <Link
+                    to="/about"
+                    className="text-xs font-semibold uppercase tracking-[0.25em] text-white/90 transition-colors hover:text-white"
+                  >
+                    About Us →
+                  </Link>
+                </div>
+
+                {/* headline overlay */}
+                <motion.div
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="absolute left-8 top-16 max-w-xl md:left-14 md:top-20"
+                >
+                  <h2 className="font-display text-4xl leading-[1.05] tracking-tight text-white md:text-6xl">
+                    Unveil excellence.
+                    <br />
+                    Discover the ADH
+                    <br />
+                    Dentistry difference.
+                  </h2>
+                  <p className="mt-6 max-w-md text-sm text-white/85 md:text-base">
+                    At ADH Dentistry, we believe your smile deserves more than just care — it deserves
+                    celebration. Our certified team offers a calm, comforting experience paired with
+                    modern dental and orthodontic treatments.
+                  </p>
+                </motion.div>
+              </div>
+
+              {/* stats strip */}
+              <div className="grid grid-cols-2 gap-px bg-border md:grid-cols-4">
+                {[
+                  { n: "15+", l: "Years of excellence" },
+                  { n: "98%", l: "Patient satisfaction rate" },
+                  { n: "5000+", l: "Smiles transformed" },
+                  { n: "17", l: "Certified experts" },
+                ].map((s, i) => (
+                  <motion.div
+                    key={s.l}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
+                    className="group relative bg-card px-6 py-8 transition-colors hover:bg-primary/5"
+                  >
+                    <div className="font-display text-4xl font-bold text-primary md:text-5xl">
+                      {s.n}
+                    </div>
+                    <div className="mt-2 text-sm text-muted-foreground">{s.l}</div>
+                    <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-primary transition-all duration-500 group-hover:w-full" />
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* SERVICES */}
       <section className="bg-secondary/60 py-24">
         <div className="mx-auto max-w-7xl px-6">
