@@ -1,220 +1,398 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Check, Star } from "lucide-react";
-import hero from "@/assets/hero-clinic.jpg";
+import { ArrowRight, ArrowUpRight, Star, Sparkles, ShieldCheck, HeartPulse } from "lucide-react";
+import { motion } from "framer-motion";
+import heroSmile from "@/assets/hero-smile.jpg";
+import heroBrush from "@/assets/hero-brush.jpg";
 import { services } from "@/lib/services";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "ADH Dentistry — Gentle, Modern Dental Care in Pakistan" },
+      { title: "ADH Dentistry — Bringing Care to Your Smile" },
       {
         name: "description",
         content:
-          "Family-friendly dental clinic in Pakistan. Checkups, whitening, braces, implants and emergency care from a caring team.",
+          "ADH Dentistry in Pakistan — modern dental care, gentle team, and a smile you'll love. Book your appointment today.",
       },
-      { property: "og:title", content: "ADH Dentistry — Modern Dental Care" },
+      { property: "og:title", content: "ADH Dentistry — Bringing Care to Your Smile" },
       {
         property: "og:description",
-        content: "Family-friendly dental care in Pakistan. Book your appointment today.",
+        content: "Modern dental care in Pakistan. Book your appointment today.",
       },
     ],
   }),
   component: Index,
 });
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  show: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] },
+  }),
+};
+
 function Index() {
   const featured = services.slice(0, 6);
 
   return (
-    <div>
+    <div className="overflow-hidden">
       {/* HERO */}
-      <section className="relative overflow-hidden">
-        <div className="mx-auto grid max-w-6xl gap-12 px-6 py-16 md:grid-cols-2 md:py-24">
-          <div className="flex flex-col justify-center">
-            <span className="inline-flex w-fit items-center gap-2 rounded-full bg-secondary px-3 py-1 text-xs font-medium text-primary">
-              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-              Welcoming new patients
-            </span>
-            <h1 className="mt-5 font-display text-4xl font-semibold leading-tight text-primary md:text-6xl">
-              Gentle dental care for the whole family.
-            </h1>
-            <p className="mt-5 max-w-lg text-base text-muted-foreground md:text-lg">
-              At ADH Dentistry we combine modern technology with a warm, unhurried
-              approach — so every visit feels easy, comfortable, and reassuring.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+      <section className="relative">
+        <div className="mx-auto grid max-w-7xl gap-10 px-6 py-12 lg:grid-cols-12 lg:gap-8 lg:py-20">
+          {/* LEFT */}
+          <div className="relative z-10 lg:col-span-6 lg:pr-6">
+            <motion.span
+              initial="hidden"
+              animate="show"
+              variants={fadeUp}
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-3 py-1 text-xs font-medium"
+            >
+              <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+              Welcoming new patients · Lahore, Pakistan
+            </motion.span>
+
+            <motion.h1
+              initial="hidden"
+              animate="show"
+              custom={1}
+              variants={fadeUp}
+              className="mt-6 font-display text-5xl leading-[1.02] tracking-tight md:text-6xl lg:text-7xl"
+            >
+              Bringing <span className="relative inline-block">
+                <span className="relative z-10">Care</span>
+                <motion.span
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ delay: 0.6, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                  className="absolute inset-x-0 bottom-1 -z-0 h-3 origin-left rounded-full bg-primary/30"
+                />
+              </span>
+              <br />
+              To Your <span className="text-primary">Smile.</span>
+            </motion.h1>
+
+            <motion.p
+              initial="hidden"
+              animate="show"
+              custom={2}
+              variants={fadeUp}
+              className="mt-6 max-w-lg text-base text-muted-foreground md:text-lg"
+            >
+              Where every smile shines bright. Step into modern, gentle dental care
+              with a team that treats you like family.
+            </motion.p>
+
+            <motion.div
+              initial="hidden"
+              animate="show"
+              custom={3}
+              variants={fadeUp}
+              className="mt-8 flex flex-wrap items-center gap-3"
+            >
               <Link
                 to="/appointment"
-                className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-sm transition-all hover:bg-accent hover:text-accent-foreground"
+                className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:-translate-y-0.5 hover:shadow-primary/40"
               >
-                Book Appointment <ArrowRight className="h-4 w-4" />
+                Book Appointment
+                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Link>
               <Link
                 to="/services"
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-6 py-3 text-sm font-medium text-foreground hover:bg-secondary"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-6 py-3.5 text-sm font-semibold text-foreground hover:border-primary hover:text-primary"
               >
                 Explore Services
               </Link>
-            </div>
+            </motion.div>
 
-            <div className="mt-10 flex items-center gap-6 text-sm text-muted-foreground">
-              <div className="flex items-center gap-1">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-accent text-accent" />
-                ))}
+            {/* Stat card */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.7 }}
+              className="mt-12 inline-flex w-full max-w-sm flex-col gap-3 rounded-2xl border border-border bg-card p-5 shadow-xl shadow-primary/5"
+            >
+              <div className="flex items-start justify-between">
+                <div>
+                  <div className="font-display text-4xl font-bold text-foreground">500+</div>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    Happy patients <br /> at ADH Dentistry.
+                  </p>
+                </div>
+                <div className="rounded-full bg-primary p-2 text-primary-foreground">
+                  <ArrowUpRight className="h-4 w-4" />
+                </div>
               </div>
-              <span>500+ happy smiles · Lahore, Pakistan</span>
-            </div>
+              <div className="flex items-center gap-3">
+                <div className="flex -space-x-2">
+                  {[heroSmile, heroBrush, heroSmile].map((src, i) => (
+                    <img
+                      key={i}
+                      src={src}
+                      alt=""
+                      className="h-7 w-7 rounded-full border-2 border-card object-cover"
+                    />
+                  ))}
+                </div>
+                <div className="flex items-center gap-0.5">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} className="h-3.5 w-3.5 fill-primary text-primary" />
+                  ))}
+                </div>
+              </div>
+            </motion.div>
           </div>
 
-          <div className="relative">
-            <div className="absolute -inset-4 -z-10 rounded-3xl bg-accent/15 blur-2xl" />
-            <img
-              src={hero}
-              alt="Warm, modern reception area at ADH Dentistry"
-              width={1600}
-              height={1100}
-              className="aspect-[4/3] w-full rounded-3xl object-cover shadow-xl"
+          {/* RIGHT — image collage */}
+          <div className="relative lg:col-span-6">
+            {/* Big electric blue block */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+              className="absolute right-0 top-6 h-[420px] w-[78%] rounded-3xl bg-primary md:h-[520px]"
             />
+
+            <div className="relative grid grid-cols-2 gap-4 pt-10">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.7 }}
+                className="animate-float"
+              >
+                <img
+                  src={heroSmile}
+                  alt="Happy patient smiling"
+                  width={768}
+                  height={1024}
+                  className="aspect-[3/4] w-full rounded-2xl object-cover shadow-2xl"
+                />
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.35, duration: 0.7 }}
+                className="mt-16"
+                style={{ animation: "float-slow 7s ease-in-out infinite 1s" }}
+              >
+                <img
+                  src={heroBrush}
+                  alt="Healthy white teeth"
+                  width={768}
+                  height={1024}
+                  className="aspect-[3/4] w-full rounded-2xl object-cover shadow-2xl"
+                  loading="lazy"
+                />
+              </motion.div>
+            </div>
+
+            {/* Floating doctor card */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7, duration: 0.6 }}
+              className="absolute -bottom-4 left-2 flex items-center gap-3 rounded-2xl border border-border bg-card p-3 pr-5 shadow-xl"
+            >
+              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-primary/15 text-primary">
+                <HeartPulse className="h-5 w-5" />
+              </div>
+              <div>
+                <div className="text-sm font-semibold">Dr. Ayesha Khan</div>
+                <div className="text-xs text-muted-foreground">Lead Dentist</div>
+              </div>
+              <span className="ml-2 inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">
+                <span className="h-1.5 w-1.5 rounded-full bg-primary" /> Available
+              </span>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Marquee */}
+        <div className="mt-10 border-y border-border bg-secondary/60 py-4">
+          <div className="flex gap-12 overflow-hidden whitespace-nowrap">
+            <div className="flex shrink-0 animate-marquee gap-12 pr-12">
+              {Array.from({ length: 2 }).map((_, k) => (
+                <div key={k} className="flex shrink-0 gap-12 pr-12">
+                  {["Gentle Care", "Modern Equipment", "Family Friendly", "Same-Week Slots", "Transparent Pricing", "Certified Dentists"].map(
+                    (t) => (
+                      <span key={t + k} className="flex items-center gap-3 text-sm font-medium text-foreground/80">
+                        <Sparkles className="h-4 w-4 text-primary" /> {t}
+                      </span>
+                    ),
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* WHY US */}
-      <section className="bg-secondary/50 py-20">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="max-w-2xl">
-            <h2 className="font-display text-3xl font-semibold text-primary md:text-4xl">
-              Care that puts you at ease
-            </h2>
-            <p className="mt-3 text-muted-foreground">
-              Everything we do is designed around comfort — for first-timers,
-              anxious patients, and little ones alike.
-            </p>
-          </div>
+      <section className="py-24">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="grid gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-5">
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="font-display text-4xl tracking-tight md:text-5xl"
+              >
+                Care that puts you <span className="text-primary">at ease.</span>
+              </motion.h2>
+              <p className="mt-5 max-w-md text-muted-foreground">
+                Everything we do is designed around comfort — for first-timers,
+                anxious patients, and little ones alike.
+              </p>
+            </div>
 
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              { t: "Experienced team", d: "Qualified dentists with 10+ years of practice." },
-              { t: "Modern equipment", d: "Digital X-rays, rotary endodontics, sterile workflows." },
-              { t: "Affordable plans", d: "Transparent pricing with family-friendly packages." },
-              { t: "Friendly staff", d: "Warm, patient care from check-in to follow-up." },
-            ].map((item) => (
-              <div key={item.t} className="rounded-2xl bg-card p-6 shadow-sm">
-                <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-accent/15 text-accent">
-                  <Check className="h-5 w-5" />
-                </div>
-                <h3 className="mt-4 font-display text-lg font-semibold">{item.t}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{item.d}</p>
-              </div>
-            ))}
+            <div className="grid gap-4 sm:grid-cols-2 lg:col-span-7">
+              {[
+                { icon: ShieldCheck, t: "Experienced team", d: "Qualified dentists with 10+ years of practice." },
+                { icon: Sparkles, t: "Modern equipment", d: "Digital X-rays, rotary endodontics, sterile workflows." },
+                { icon: HeartPulse, t: "Gentle approach", d: "Calm, unhurried visits — especially for nervous patients." },
+                { icon: Star, t: "Transparent pricing", d: "Family-friendly packages with no hidden fees." },
+              ].map((item, i) => (
+                <motion.div
+                  key={item.t}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.08 }}
+                  whileHover={{ y: -4 }}
+                  className="group rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary"
+                >
+                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary text-primary-foreground">
+                    <item.icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="mt-5 font-display text-lg">{item.t}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">{item.d}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* SERVICES PREVIEW */}
-      <section className="py-20">
-        <div className="mx-auto max-w-6xl px-6">
+      {/* SERVICES */}
+      <section className="bg-secondary/60 py-24">
+        <div className="mx-auto max-w-7xl px-6">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <h2 className="font-display text-3xl font-semibold text-primary md:text-4xl">
-                What we offer
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+                Our Services
+              </span>
+              <h2 className="mt-3 font-display text-4xl tracking-tight md:text-5xl">
+                Everything for a <br className="hidden md:block" /> healthier smile.
               </h2>
-              <p className="mt-2 max-w-xl text-muted-foreground">
-                From routine cleanings to full smile makeovers — all under one calm, modern roof.
-              </p>
             </div>
             <Link
               to="/services"
-              className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:text-accent"
+              className="group inline-flex items-center gap-1 text-sm font-semibold text-primary"
             >
-              View all <ArrowRight className="h-4 w-4" />
+              View all <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
 
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {featured.map((s) => (
-              <div
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {featured.map((s, i) => (
+              <motion.div
                 key={s.slug}
-                className="group rounded-2xl border border-border bg-card p-6 transition-all hover:-translate-y-0.5 hover:border-accent hover:shadow-md"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: i * 0.06 }}
+                whileHover={{ y: -6 }}
+                className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 transition-all hover:border-primary hover:shadow-xl hover:shadow-primary/10"
               >
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-accent/15 text-accent">
+                <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-primary/5 transition-transform group-hover:scale-150" />
+                <div className="relative inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary text-primary-foreground">
                   <s.icon className="h-5 w-5" />
                 </div>
-                <h3 className="mt-4 font-display text-lg font-semibold text-primary">
-                  {s.title}
-                </h3>
-                <p className="mt-2 text-sm text-muted-foreground">{s.short}</p>
-              </div>
+                <h3 className="relative mt-5 font-display text-lg">{s.title}</h3>
+                <p className="relative mt-2 text-sm text-muted-foreground">{s.short}</p>
+                <div className="relative mt-5 inline-flex items-center gap-1 text-sm font-medium text-primary opacity-0 transition-opacity group-hover:opacity-100">
+                  Learn more <ArrowRight className="h-3.5 w-3.5" />
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="bg-secondary/50 py-20">
-        <div className="mx-auto max-w-6xl px-6">
-          <h2 className="font-display text-3xl font-semibold text-primary md:text-4xl">
-            Loved by our patients
-          </h2>
+      <section className="py-24">
+        <div className="mx-auto max-w-7xl px-6">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="font-display text-4xl tracking-tight md:text-5xl"
+          >
+            Clients love <span className="text-primary">our smiles.</span>
+          </motion.h2>
 
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
             {[
-              {
-                quote:
-                  "The most relaxed I've ever been at a dental clinic. The whole team is so kind and gentle.",
-                name: "Ayesha K.",
-                role: "Patient",
-              },
-              {
-                quote:
-                  "My kids actually look forward to their checkups now. The clinic is bright, warm, and welcoming.",
-                name: "Hamza S.",
-                role: "Parent",
-              },
-              {
-                quote:
-                  "Got my whitening done in one visit. Clear pricing, no surprises. Highly recommend.",
-                name: "Sana M.",
-                role: "Patient",
-              },
-            ].map((t) => (
-              <figure key={t.name} className="rounded-2xl bg-card p-6 shadow-sm">
+              { q: "The most relaxed I've ever been at a dental clinic. Everyone is so kind and gentle.", n: "Ayesha K.", r: "Patient" },
+              { q: "My kids actually look forward to their checkups now. Bright, warm, and welcoming.", n: "Hamza S.", r: "Parent" },
+              { q: "Got my whitening done in one visit. Clear pricing, no surprises. Highly recommend.", n: "Sana M.", r: "Patient" },
+            ].map((t, i) => (
+              <motion.figure
+                key={t.n}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="rounded-2xl border border-border bg-card p-6"
+              >
                 <div className="flex gap-0.5">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-accent text-accent" />
+                  {Array.from({ length: 5 }).map((_, j) => (
+                    <Star key={j} className="h-4 w-4 fill-primary text-primary" />
                   ))}
                 </div>
-                <blockquote className="mt-4 text-sm leading-relaxed text-foreground/90">
-                  "{t.quote}"
-                </blockquote>
+                <blockquote className="mt-4 text-sm leading-relaxed">"{t.q}"</blockquote>
                 <figcaption className="mt-5 text-sm">
-                  <span className="font-medium text-primary">{t.name}</span>
-                  <span className="text-muted-foreground"> · {t.role}</span>
+                  <span className="font-semibold">{t.n}</span>
+                  <span className="text-muted-foreground"> · {t.r}</span>
                 </figcaption>
-              </figure>
+              </motion.figure>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-20">
-        <div className="mx-auto max-w-4xl px-6">
-          <div className="rounded-3xl bg-primary px-8 py-14 text-center text-primary-foreground md:px-16">
-            <h2 className="font-display text-3xl font-semibold md:text-4xl">
-              Ready for a brighter, healthier smile?
-            </h2>
-            <p className="mx-auto mt-3 max-w-xl text-primary-foreground/85">
-              Book an appointment today — same-week slots usually available.
-            </p>
-            <Link
-              to="/appointment"
-              className="mt-7 inline-flex items-center gap-2 rounded-full bg-background px-6 py-3 text-sm font-medium text-primary hover:bg-accent hover:text-accent-foreground"
-            >
-              Book Appointment <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
+      <section className="pb-24">
+        <div className="mx-auto max-w-7xl px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="relative overflow-hidden rounded-3xl bg-primary px-8 py-16 text-primary-foreground md:px-16 md:py-20"
+          >
+            <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-white/10 blur-2xl" />
+            <div className="absolute -bottom-24 -left-10 h-72 w-72 rounded-full bg-white/10 blur-2xl" />
+            <div className="relative max-w-2xl">
+              <h2 className="font-display text-4xl tracking-tight md:text-5xl">
+                Ready for a brighter, healthier smile?
+              </h2>
+              <p className="mt-4 text-primary-foreground/85">
+                Book an appointment today — same-week slots usually available.
+              </p>
+              <Link
+                to="/appointment"
+                className="mt-8 inline-flex items-center gap-2 rounded-full bg-background px-6 py-3.5 text-sm font-semibold text-primary shadow-lg transition-transform hover:-translate-y-0.5"
+              >
+                Book Appointment <ArrowUpRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </motion.div>
         </div>
       </section>
     </div>
