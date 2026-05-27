@@ -322,7 +322,7 @@ function Index() {
               </motion.div>
 
               {/* CENTER — crystal tooth overlay */}
-              <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center md:static md:col-span-4 md:items-center md:justify-center">
+              <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center opacity-40 md:static md:col-span-4 md:z-auto md:opacity-100 md:items-center md:justify-center">
                 <motion.img
                   src={crystalTooth}
                   alt="Crystal tooth"
@@ -333,7 +333,7 @@ function Index() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 1.2, ease: "easeOut" }}
-                  className="h-auto w-[260px] -translate-y-4 md:w-full md:max-w-[440px] md:translate-y-0"
+                  className="h-auto w-[240px] -translate-y-2 md:w-full md:max-w-[440px] md:translate-y-0"
                   style={{ filter: "drop-shadow(0 40px 80px rgba(60,140,255,0.55))" }}
                 />
               </div>
