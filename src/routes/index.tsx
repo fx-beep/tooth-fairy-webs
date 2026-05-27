@@ -3,6 +3,7 @@ import { ArrowRight, ArrowUpRight, Star, Sparkles, ShieldCheck, HeartPulse } fro
 import { motion, type Variants } from "framer-motion";
 import heroSmile from "@/assets/hero-smile.jpg";
 import heroBrush from "@/assets/hero-brush.jpg";
+import crystalTooth from "@/assets/crystal-tooth.jpg";
 import { services } from "@/lib/services";
 
 export const Route = createFileRoute("/")({
@@ -277,93 +278,115 @@ function Index() {
         </div>
       </section>
 
-      {/* EXCELLENCE SHOWCASE — inspired card frame */}
-      <section className="relative py-24">
-        {/* ambient gradient backdrop */}
-        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/15 via-accent/10 to-background" />
-        <div className="absolute inset-0 -z-10 opacity-60 [background-image:radial-gradient(circle_at_20%_20%,var(--primary)/20,transparent_40%),radial-gradient(circle_at_80%_60%,var(--accent)/25,transparent_45%)]" />
-
+      {/* EXCELLENCE SHOWCASE — luxury blue */}
+      <section className="relative overflow-hidden py-24">
         <div className="mx-auto max-w-7xl px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.9, ease: "easeOut" }}
-            className="relative rounded-[2.5rem] p-2 shadow-2xl shadow-primary/20 ring-1 ring-white/40 backdrop-blur-xl"
-            style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.55), rgba(255,255,255,0.15))" }}
+            className="relative overflow-hidden rounded-[2rem] shadow-2xl shadow-primary/30"
+            style={{
+              background:
+                "radial-gradient(ellipse at 30% 40%, #1e3a6e 0%, #0a1a3a 55%, #050d1f 100%)",
+            }}
           >
-            <div className="relative overflow-hidden rounded-[2rem] bg-card">
-              {/* hero image with green tint */}
-              <div className="relative h-[480px] w-full md:h-[560px]">
-                <img
-                  src={heroSmile}
-                  alt="ADH Dentistry clinic"
-                  className="absolute inset-0 h-full w-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/70 via-primary/40 to-accent/30 mix-blend-multiply" />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/10 to-transparent" />
+            {/* top nav row */}
+            <div className="relative z-20 flex items-center justify-between px-8 pt-7 md:px-12">
+              <span className="font-display text-lg tracking-tight text-white">ADH Dentistry</span>
+              <nav className="hidden gap-7 text-xs font-medium uppercase tracking-[0.2em] text-white/70 md:flex">
+                <Link to="/about" className="hover:text-white">About</Link>
+                <Link to="/services" className="hover:text-white">Services</Link>
+                <Link to="/team" className="hover:text-white">Specialists</Link>
+                <Link to="/contact" className="hover:text-white">Contact</Link>
+              </nav>
+            </div>
 
-                {/* top-right link */}
-                <div className="absolute right-8 top-8">
+            <div className="relative grid grid-cols-1 items-center gap-6 px-8 pt-10 pb-16 md:grid-cols-12 md:px-12 md:pt-14 md:pb-20">
+              {/* LEFT — headline */}
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="relative z-10 md:col-span-5"
+              >
+                <h2 className="font-display text-4xl leading-[1.05] tracking-tight text-white md:text-5xl lg:text-6xl">
+                  A clearer path<br />to a confident<br /><em className="font-light italic text-white/95">smile</em>.
+                </h2>
+                <p className="mt-6 max-w-sm text-sm leading-relaxed text-white/70">
+                  A premium dental and aesthetic studio crafting confident smiles
+                  for those who settle for nothing ordinary.
+                </p>
+              </motion.div>
+
+              {/* CENTER — crystal tooth */}
+              <div className="relative md:col-span-4">
+                <motion.img
+                  src={crystalTooth}
+                  alt="Crystal tooth"
+                  width={1024}
+                  height={1024}
+                  loading="lazy"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.2, ease: "easeOut" }}
+                  className="mx-auto h-auto w-[280px] md:w-full md:max-w-[420px]"
+                  style={{ filter: "drop-shadow(0 30px 60px rgba(80,160,255,0.5))" }}
+                />
+                <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,rgba(100,180,255,0.35),transparent_60%)] blur-2xl" />
+              </div>
+
+              {/* RIGHT — luxury card */}
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="relative z-10 md:col-span-3 md:self-end"
+              >
+                <div className="rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-xl">
+                  <h3 className="font-display text-2xl leading-tight text-white">
+                    Luxury care<br />made personal
+                  </h3>
                   <Link
-                    to="/about"
-                    className="text-xs font-semibold uppercase tracking-[0.25em] text-white/90 transition-colors hover:text-white"
+                    to="/appointment"
+                    className="mt-5 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-xs font-semibold text-[#0a1a3a] transition-transform hover:-translate-y-0.5"
                   >
-                    About Us →
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#0a1a3a]" />
+                    Schedule a visit
                   </Link>
                 </div>
+              </motion.div>
+            </div>
 
-                {/* headline overlay */}
+            {/* stats strip */}
+            <div className="relative z-10 grid grid-cols-2 gap-px border-t border-white/10 bg-white/5 md:grid-cols-4">
+              {[
+                { n: "15+", l: "Years of excellence" },
+                { n: "98%", l: "Patient satisfaction" },
+                { n: "5000+", l: "Smiles transformed" },
+                { n: "17", l: "Certified experts" },
+              ].map((s, i) => (
                 <motion.div
-                  initial={{ opacity: 0, y: 24 }}
+                  key={s.l}
+                  initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                  className="absolute left-8 top-16 max-w-xl md:left-14 md:top-20"
+                  transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
+                  className="px-6 py-7 backdrop-blur-sm"
                 >
-                  <h2 className="font-display text-4xl leading-[1.05] tracking-tight text-white md:text-6xl">
-                    Unveil excellence.
-                    <br />
-                    Discover the ADH
-                    <br />
-                    Dentistry difference.
-                  </h2>
-                  <p className="mt-6 max-w-md text-sm text-white/85 md:text-base">
-                    At ADH Dentistry, we believe your smile deserves more than just care — it deserves
-                    celebration. Our certified team offers a calm, comforting experience paired with
-                    modern dental and orthodontic treatments.
-                  </p>
+                  <div className="font-display text-3xl font-bold text-white md:text-4xl">{s.n}</div>
+                  <div className="mt-1.5 text-xs uppercase tracking-[0.15em] text-white/60">{s.l}</div>
                 </motion.div>
-              </div>
-
-              {/* stats strip */}
-              <div className="grid grid-cols-2 gap-px bg-border md:grid-cols-4">
-                {[
-                  { n: "15+", l: "Years of excellence" },
-                  { n: "98%", l: "Patient satisfaction rate" },
-                  { n: "5000+", l: "Smiles transformed" },
-                  { n: "17", l: "Certified experts" },
-                ].map((s, i) => (
-                  <motion.div
-                    key={s.l}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
-                    className="group relative bg-card px-6 py-8 transition-colors hover:bg-primary/5"
-                  >
-                    <div className="font-display text-4xl font-bold text-primary md:text-5xl">
-                      {s.n}
-                    </div>
-                    <div className="mt-2 text-sm text-muted-foreground">{s.l}</div>
-                    <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-primary transition-all duration-500 group-hover:w-full" />
-                  </motion.div>
-                ))}
-              </div>
+              ))}
             </div>
           </motion.div>
         </div>
       </section>
+
 
       {/* SERVICES */}
       <section className="bg-secondary/60 py-24">
