@@ -3,7 +3,7 @@ import { ArrowRight, ArrowUpRight, Star, Sparkles, ShieldCheck, HeartPulse } fro
 import { motion, type Variants } from "framer-motion";
 import heroPortrait from "@/assets/hero-portrait.jpg";
 import doctorPortrait from "@/assets/doctor-portrait.jpg";
-import crystalTooth from "@/assets/crystal-tooth.jpg";
+import crystalTooth from "@/assets/amber-tooth.png";
 import { services } from "@/lib/services";
 
 export const Route = createFileRoute("/")({
