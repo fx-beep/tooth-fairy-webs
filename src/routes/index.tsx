@@ -326,9 +326,9 @@ function Index() {
                   </h3>
                   <Link
                     to="/appointment"
-                    className="mt-5 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-xs font-semibold text-[#0a1a3a] transition-transform hover:-translate-y-0.5"
+                    className="mt-5 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-xs font-semibold text-[#2d4a3e] transition-transform hover:-translate-y-0.5"
                   >
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#0a1a3a]" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#c9824a]" />
                     Schedule a visit
                   </Link>
                 </div>
