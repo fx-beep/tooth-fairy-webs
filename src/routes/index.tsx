@@ -262,7 +262,7 @@ function Index() {
             className="relative overflow-hidden rounded-[2rem] shadow-2xl shadow-primary/30"
             style={{
               background:
-                "radial-gradient(ellipse at 30% 40%, #1e3a6e 0%, #0a1a3a 55%, #050d1f 100%)",
+                "radial-gradient(ellipse at 30% 40%, #3b5f50 0%, #2d4a3e 55%, #1d3328 100%)",
             }}
           >
             {/* top nav row */}
