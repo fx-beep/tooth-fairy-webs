@@ -296,7 +296,7 @@ function Index() {
 
               {/* CENTER — crystal tooth */}
               <div className="relative col-span-12 flex items-center justify-center md:col-span-4">
-                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(100,180,255,0.35),transparent_60%)] blur-2xl" />
+                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(201,130,74,0.4),transparent_60%)] blur-2xl" />
                 <motion.img
                   src={crystalTooth}
                   alt="Crystal tooth"
@@ -308,7 +308,7 @@ function Index() {
                   viewport={{ once: true }}
                   transition={{ duration: 1.2, ease: "easeOut" }}
                   className="relative h-auto w-[280px] md:w-full md:max-w-[420px]"
-                  style={{ filter: "drop-shadow(0 40px 80px rgba(80,160,255,0.5))" }}
+                  style={{ filter: "drop-shadow(0 40px 80px rgba(201,130,74,0.55))" }}
                 />
               </div>
 
