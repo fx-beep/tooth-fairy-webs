@@ -39,39 +39,38 @@ function Index() {
 
   return (
     <div className="overflow-hidden">
-      {/* HERO */}
-      <section className="relative">
-        <div className="mx-auto grid max-w-7xl gap-10 px-6 py-12 lg:grid-cols-12 lg:gap-8 lg:py-20">
-          {/* LEFT */}
-          <div className="relative z-10 lg:col-span-6 lg:pr-6">
-            <motion.span
+      {/* HERO — Tilted Glassmorphism (Warm Sand Editorial) */}
+      <section className="relative overflow-hidden">
+        {/* Ambient sand orbs */}
+        <div className="pointer-events-none absolute -left-32 top-20 h-[420px] w-[420px] rounded-full bg-secondary/60 blur-3xl" />
+        <div className="pointer-events-none absolute -right-32 bottom-0 h-[360px] w-[360px] rounded-full bg-primary/10 blur-3xl" />
+
+        <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-6 py-16 lg:grid-cols-12 lg:gap-20 lg:py-24">
+          {/* LEFT — Editorial copy */}
+          <div className="relative z-10 lg:col-span-7">
+            <motion.div
               initial="hidden"
               animate="show"
               variants={fadeUp}
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-3 py-1 text-xs font-medium"
+              className="inline-flex items-center rounded-full border border-secondary bg-secondary/30 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-accent"
             >
-              <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-              Welcoming new patients · Lahore, Pakistan
-            </motion.span>
+              <span className="mr-2.5 h-2 w-2 rounded-full bg-primary" />
+              Welcoming new patients · Lahore
+            </motion.div>
 
             <motion.h1
               initial="hidden"
               animate="show"
               custom={1}
               variants={fadeUp}
-              className="mt-6 font-display text-5xl leading-[1.02] tracking-tight md:text-6xl lg:text-7xl"
+              className="mt-8 font-display text-6xl font-extrabold leading-[0.9] tracking-tight text-accent md:text-7xl lg:text-8xl"
             >
-              Bringing <span className="relative inline-block">
-                <span className="relative z-10">Care</span>
-                <motion.span
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ delay: 0.6, duration: 0.7, ease: "easeOut" }}
-                  className="absolute inset-x-0 bottom-1 -z-0 h-3 origin-left rounded-full bg-primary/30"
-                />
+              Bringing{" "}
+              <span className="font-serif text-[1.05em] font-medium italic text-primary">
+                Care
               </span>
               <br />
-              To Your <span className="text-primary">Smile.</span>
+              To Your Smile
             </motion.h1>
 
             <motion.p
@@ -79,10 +78,10 @@ function Index() {
               animate="show"
               custom={2}
               variants={fadeUp}
-              className="mt-6 max-w-lg text-base text-muted-foreground md:text-lg"
+              className="mt-8 max-w-md text-lg font-light leading-relaxed text-accent/80 md:text-xl"
             >
-              Where every smile shines bright. Step into modern, gentle dental care
-              with a team that treats you like family.
+              A sanctuary of dental excellence where modern precision meets a
+              bespoke, luxury patient experience in Lahore.
             </motion.p>
 
             <motion.div
@@ -90,125 +89,99 @@ function Index() {
               animate="show"
               custom={3}
               variants={fadeUp}
-              className="mt-8 flex flex-wrap items-center gap-3"
+              className="mt-10 flex flex-wrap items-center gap-4"
             >
               <Link
                 to="/appointment"
-                className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:-translate-y-0.5 hover:shadow-primary/40"
+                className="rounded-full bg-primary px-9 py-4 text-sm font-bold text-primary-foreground shadow-xl shadow-primary/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/30 active:scale-95"
               >
                 Book Appointment
-                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Link>
               <Link
                 to="/services"
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-6 py-3.5 text-sm font-semibold text-foreground hover:border-primary hover:text-primary"
+                className="group flex items-center gap-3 px-4 py-4 text-sm font-bold text-accent"
               >
                 Explore Services
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1.5" />
               </Link>
-            </motion.div>
-
-            {/* Stat card */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.7 }}
-              className="mt-12 inline-flex w-full max-w-sm flex-col gap-3 rounded-2xl border border-border bg-card p-5 shadow-xl shadow-primary/5"
-            >
-              <div className="flex items-start justify-between">
-                <div>
-                  <div className="font-display text-4xl font-bold text-foreground">500+</div>
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    Happy patients <br /> at ADH Dentistry.
-                  </p>
-                </div>
-                <div className="rounded-full bg-primary p-2 text-primary-foreground">
-                  <ArrowUpRight className="h-4 w-4" />
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="flex -space-x-2">
-                  {[heroSmile, heroBrush, heroSmile].map((src, i) => (
-                    <img
-                      key={i}
-                      src={src}
-                      alt=""
-                      className="h-7 w-7 rounded-full border-2 border-card object-cover"
-                    />
-                  ))}
-                </div>
-                <div className="flex items-center gap-0.5">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="h-3.5 w-3.5 fill-primary text-primary" />
-                  ))}
-                </div>
-              </div>
             </motion.div>
           </div>
 
-          {/* RIGHT — image collage */}
-          <div className="relative lg:col-span-6">
-            {/* Big electric blue block */}
+          {/* RIGHT — Tilted portrait + glass cards */}
+          <div className="relative lg:col-span-5">
             <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.9, ease: "easeOut" }}
-              className="absolute right-0 top-6 h-[420px] w-[78%] rounded-3xl bg-primary md:h-[520px]"
-            />
-
-            <div className="relative grid grid-cols-2 gap-4 pt-10">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.7 }}
-                className="animate-float"
-              >
-                <img
-                  src={heroSmile}
-                  alt="Happy patient smiling"
-                  width={768}
-                  height={1024}
-                  className="aspect-[3/4] w-full rounded-2xl object-cover shadow-2xl"
-                />
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.35, duration: 0.7 }}
-                className="mt-16"
-                style={{ animation: "float-slow 7s ease-in-out infinite 1s" }}
-              >
-                <img
-                  src={heroBrush}
-                  alt="Healthy white teeth"
-                  width={768}
-                  height={1024}
-                  className="aspect-[3/4] w-full rounded-2xl object-cover shadow-2xl"
-                  loading="lazy"
-                />
-              </motion.div>
-            </div>
-
-            {/* Floating doctor card */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7, duration: 0.6 }}
-              className="absolute -bottom-4 left-2 flex items-center gap-3 rounded-2xl border border-border bg-card p-3 pr-5 shadow-xl"
+              initial={{ opacity: 0, scale: 0.95, rotate: 6 }}
+              animate={{ opacity: 1, scale: 1, rotate: 2 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              whileHover={{ rotate: 0 }}
+              className="relative z-10 aspect-[3/4] w-full overflow-hidden rounded-[3rem] shadow-2xl shadow-accent/20"
             >
-              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-primary/15 text-primary">
-                <HeartPulse className="h-5 w-5" />
+              <img
+                src={heroPortrait}
+                alt="Smiling patient at ADH Dentistry"
+                width={832}
+                height={1088}
+                className="h-full w-full object-cover"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-accent/15 to-transparent" />
+            </motion.div>
+
+            {/* Doctor glass card */}
+            <motion.div
+              initial={{ opacity: 0, x: -30, y: 20 }}
+              animate={{ opacity: 1, x: 0, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.7 }}
+              className="glass-card animate-float absolute left-[-2rem] top-[22%] z-20 max-w-[240px] rounded-[2rem] p-5"
+              style={{ animationDelay: "-2s" }}
+            >
+              <div className="mb-3 flex items-center gap-3">
+                <div className="h-12 w-12 overflow-hidden rounded-full border-2 border-background shadow">
+                  <img
+                    src={doctorPortrait}
+                    alt="Dr. Arslan"
+                    width={48}
+                    height={48}
+                    loading="lazy"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div>
+                  <div className="text-sm font-bold text-accent">Dr. Arslan</div>
+                  <div className="text-[10px] font-semibold uppercase tracking-tighter text-accent/60">
+                    Lead Prosthodontist
+                  </div>
+                </div>
               </div>
-              <div>
-                <div className="text-sm font-semibold">Dr. Ayesha Khan</div>
-                <div className="text-xs text-muted-foreground">Lead Dentist</div>
+              <div className="flex items-center gap-2 rounded-xl bg-emerald-50 px-3 py-2 text-xs font-bold text-emerald-800">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                </span>
+                Available Today
               </div>
-              <span className="ml-2 inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">
-                <span className="h-1.5 w-1.5 rounded-full bg-primary" /> Available
-              </span>
+            </motion.div>
+
+            {/* Rating glass card */}
+            <motion.div
+              initial={{ opacity: 0, x: 30, y: 20 }}
+              animate={{ opacity: 1, x: 0, y: 0 }}
+              transition={{ delay: 0.65, duration: 0.7 }}
+              className="glass-card animate-float absolute -bottom-6 -right-4 z-20 flex flex-col items-center rounded-[2rem] p-6 text-center"
+              style={{ animationDelay: "-5s" }}
+            >
+              <div className="font-display text-3xl font-black text-primary">4.9/5</div>
+              <div className="my-2 flex gap-0.5">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} className="h-4 w-4 fill-primary text-primary" />
+                ))}
+              </div>
+              <div className="text-[10px] font-bold uppercase tracking-widest text-accent/60">
+                Patient Satisfaction
+              </div>
             </motion.div>
           </div>
         </div>
+
 
         {/* Marquee */}
         <div className="mt-10 border-y border-border bg-secondary/60 py-4">
