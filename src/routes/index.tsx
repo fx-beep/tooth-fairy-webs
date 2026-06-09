@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight, Star, Sparkles, ShieldCheck, HeartPulse } from "lucide-react";
 import { motion, type Variants } from "framer-motion";
-import heroSmile from "@/assets/hero-smile.jpg";
-import heroBrush from "@/assets/hero-brush.jpg";
+import heroPortrait from "@/assets/hero-portrait.jpg";
+import doctorPortrait from "@/assets/doctor-portrait.jpg";
 import crystalTooth from "@/assets/crystal-tooth.jpg";
 import { services } from "@/lib/services";
 
