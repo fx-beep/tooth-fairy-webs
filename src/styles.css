@@ -4,7 +4,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800;900&family=Epilogue:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600&display=swap");
+/* Fonts loaded via <link> in src/routes/__root.tsx */
 
 @theme inline {
   --font-display: "Urbanist", ui-sans-serif, system-ui, sans-serif;
