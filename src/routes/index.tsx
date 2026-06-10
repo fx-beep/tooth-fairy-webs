@@ -252,7 +252,7 @@ function Index() {
       </section>
 
       {/* EXCELLENCE SHOWCASE — luxury blue */}
-      <section className="relative overflow-hidden py-24">
+      <section className="relative overflow-x-hidden py-24">
         <div className="mx-auto max-w-7xl px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
