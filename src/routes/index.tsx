@@ -294,22 +294,24 @@ function Index() {
                 </p>
               </motion.div>
 
-              {/* CENTER — crystal tooth */}
+              {/* CENTER — editorial typography */}
               <div className="relative col-span-12 flex items-center justify-center md:col-span-4">
-                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(201,130,74,0.4),transparent_60%)] blur-2xl" />
-                <motion.img
-                  src={crystalTooth}
-                  alt="Crystal tooth"
-                  width={1024}
-                  height={1024}
-                  loading="lazy"
-                  initial={{ opacity: 0, scale: 0.9 }}
+                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(201,130,74,0.35),transparent_65%)] blur-3xl" />
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.92 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 1.2, ease: "easeOut" }}
-                  className="relative h-auto w-[280px] md:w-full md:max-w-[420px]"
-                  style={{ filter: "drop-shadow(0 40px 80px rgba(201,130,74,0.55))" }}
-                />
+                  transition={{ duration: 1.1, ease: "easeOut" }}
+                  className="relative flex flex-col items-center text-center"
+                >
+                  <span className="font-serif text-[10rem] font-light italic leading-none text-[#c9824a] md:text-[14rem] lg:text-[16rem]"
+                    style={{ textShadow: "0 20px 60px rgba(201,130,74,0.45)" }}>
+                    ADH
+                  </span>
+                  <span className="-mt-2 font-display text-[10px] font-bold uppercase tracking-[0.55em] text-white/70 md:text-xs">
+                    Est. Lahore
+                  </span>
+                </motion.div>
               </div>
 
               {/* RIGHT — luxury card */}
