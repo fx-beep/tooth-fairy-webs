@@ -276,39 +276,41 @@ function Index() {
               </nav>
             </div>
 
-            <div className="relative grid grid-cols-1 items-center gap-6 px-8 pt-10 pb-16 md:grid-cols-12 md:px-12 md:pt-14 md:pb-20">
+            <div className="relative grid grid-cols-1 items-center gap-10 px-6 pt-10 pb-14 sm:px-8 md:grid-cols-12 md:gap-6 md:px-12 md:pt-14 md:pb-20">
               {/* LEFT — headline */}
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="relative z-10 md:col-span-5"
+                className="relative z-10 min-w-0 md:col-span-5"
               >
-                <h2 className="font-display text-4xl leading-[1.05] tracking-tight text-white md:text-5xl lg:text-6xl">
-                  A clearer path<br />to a confident<br /><em className="font-light italic text-white/95">smile</em>.
+                <h2 className="font-display text-[clamp(2rem,8vw,3.75rem)] leading-[1.05] tracking-tight text-white lg:text-6xl">
+                  A clearer path to a confident <em className="font-light italic text-white/95">smile</em>.
                 </h2>
-                <p className="mt-6 max-w-sm text-sm leading-relaxed text-white/70">
+                <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/70">
                   A premium dental and aesthetic studio crafting confident smiles
                   for those who settle for nothing ordinary.
                 </p>
               </motion.div>
 
               {/* CENTER — editorial typography */}
-              <div className="relative col-span-12 flex items-center justify-center md:col-span-4">
+              <div className="relative col-span-12 flex min-w-0 items-center justify-center md:col-span-4">
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(201,130,74,0.35),transparent_65%)] blur-3xl" />
                 <motion.div
                   initial={{ opacity: 0, scale: 0.92 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 1.1, ease: "easeOut" }}
-                  className="relative flex flex-col items-center text-center"
+                  className="relative flex w-full flex-col items-center text-center"
                 >
-                  <span className="font-serif text-[10rem] font-light italic leading-none text-[#c9824a] md:text-[14rem] lg:text-[16rem]"
-                    style={{ textShadow: "0 20px 60px rgba(201,130,74,0.45)" }}>
+                  <span
+                    className="font-serif font-light italic leading-none text-[#c9824a] text-[clamp(5rem,22vw,16rem)]"
+                    style={{ textShadow: "0 20px 60px rgba(201,130,74,0.45)" }}
+                  >
                     ADH
                   </span>
-                  <span className="-mt-2 font-display text-[10px] font-bold uppercase tracking-[0.55em] text-white/70 md:text-xs">
+                  <span className="mt-2 font-display text-[10px] font-bold uppercase tracking-[0.45em] text-white/70 md:text-xs md:tracking-[0.55em]">
                     Est. Lahore
                   </span>
                 </motion.div>
@@ -320,11 +322,11 @@ function Index() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="relative z-10 md:col-span-3 md:self-end"
+                className="relative z-10 min-w-0 md:col-span-3 md:self-end"
               >
                 <div className="rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-xl">
                   <h3 className="font-display text-2xl leading-tight text-white">
-                    Luxury care<br />made personal
+                    Luxury care made personal
                   </h3>
                   <Link
                     to="/appointment"
